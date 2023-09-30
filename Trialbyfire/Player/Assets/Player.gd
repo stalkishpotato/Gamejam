@@ -232,6 +232,14 @@ func calculate_wind() -> Vector2:
 	
 	return wind_vec
 
+
+# warning-ignore:unreachable_code
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
+
+
 func calculate_sprite():
 	sprite.playing = true
 	sprite.speed_scale = 1
@@ -361,11 +369,6 @@ func _on_ForceJump_timeout():
 func death():
 	Global.restart_game()
 
-# slide collision for disappearing platforms
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if collision.collider.has_method("collide_with"):
-			collision.collider.collide_with(collision, self)
 
 func teleport(to: Vector2):
 	set_position(to)
