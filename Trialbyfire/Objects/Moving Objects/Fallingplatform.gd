@@ -19,7 +19,7 @@ func _physics_process(delta):
 	velocity.y += Global.gravity * delta
 	position += velocity * delta
 
-func collide_with(collision : KinematicCollision, collider : KinematicBody2D):
+func collide_with(_collision : KinematicCollision, _collider : KinematicBody2D):
 	if !is_triggered:
 		is_triggered = true
 		velocity = Vector2.ZERO
@@ -35,4 +35,5 @@ func _on_ResetTimer_timeout():
 	collision_layer = 0
 	global_position = reset_position
 	yield(get_tree(), "physics_frame")
+	collision_layer = temp
 	is_triggered = false

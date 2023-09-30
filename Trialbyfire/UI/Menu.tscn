@@ -229,8 +229,8 @@ text = "A game made by YOUR NAME and Finn Pickart"
 texture = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 314, 463 )
-scale = Vector2( 4, 4 )
+position = Vector2( 334, 482 )
+scale = Vector2( 0.5, 0.5 )
 speed = 800
 jump_height = 256.0
 climb_speed = 600

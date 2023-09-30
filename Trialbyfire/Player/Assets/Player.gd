@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const PUSH = 5
+
 onready var rot_tween = $RotTween
 onready var stween = $STween
 onready var sprite = $Sprite
@@ -61,6 +63,15 @@ func _physics_process(delta):
 	calculate_sprite()
 	var snap = 8
 	climb_dir = 0
+	
+	
+	
+	velocity = move_and_slide(velocity, get_floor_normal(), false, 1, 0.785938,false)
+	
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider is Moveableblock:
+			collision.collider.apply_central_impulse(-collision.normal * PUSH)
 	
 	#Speed Smoothing
 	var n_speed = speed * movement_dir

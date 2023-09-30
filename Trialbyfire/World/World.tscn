@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://World/Background.tres" type="TileSet" id=1]
 [ext_resource path="res://Objects/DeathTrigger/DeathTrigger.tscn" type="PackedScene" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/CoinCounter/CoinCounter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Teleporter/TeleporterArea.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Objects/Cloud Platform/Cloud Platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Moving Objects/Cloud Platform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Foreground.tres" type="TileSet" id=8]
 [ext_resource path="res://Objects/Teleporter/Assets/Door.png" type="Texture" id=9]
 [ext_resource path="res://UI/Transition/Transition.tscn" type="PackedScene" id=10]
@@ -21,7 +21,8 @@
 [ext_resource path="res://Objects/Trampoline/Trampoline.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Objects/BoostGem/BoostGem.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Objects/Swing/Swing.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Objects/Cloud Platform/Actual Fall.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Objects/Moving Objects/Actual Fall.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Objects/Moving Objects/Moving block.tscn" type="PackedScene" id=23]
 
 [sub_resource type="DynamicFont" id=13]
 size = 72
@@ -251,7 +252,7 @@ length = 256
 start = "right"
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 594, 296 )
+position = Vector2( 600, 283 )
 scale = Vector2( 0.16, 0.16 )
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -305,3 +306,9 @@ position = Vector2( 584, 152 )
 
 [node name="Cloud" parent="." instance=ExtResource( 22 )]
 position = Vector2( 1053, 325 )
+
+[node name="Movableblock" parent="." instance=ExtResource( 23 )]
+position = Vector2( 490, 245 )
+
+[node name="Cloud" parent="Movableblock" instance=ExtResource( 22 )]
+position = Vector2( 186, -115 )

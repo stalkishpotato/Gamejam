@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Moveableblock",
+"language": "GDScript",
+"path": "res://Objects/Moving Objects/Moving block.gd"
+} ]
+_global_script_class_icons={
+"Moveableblock": ""
+}
+
 [application]
 
 config/name="2D Platformer Toolkit 2"
