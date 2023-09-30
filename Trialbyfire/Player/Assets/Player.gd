@@ -42,6 +42,10 @@ var buffer_jump = false
 var on_ground = false
 var forced_jump = false
 
+var dashDirection = Vector2(1,0)
+var canDash = false
+var dashing = false
+
 var boost_normal = Vector2()
 var boost_strength = speed*4
 var boost_duration = 0
@@ -63,7 +67,7 @@ func _physics_process(delta):
 	calculate_sprite()
 	var snap = 8
 	climb_dir = 0
-	
+	dash()
 	
 	
 	velocity = move_and_slide(velocity, get_floor_normal(), false, 1, 0.785938,false)
@@ -72,6 +76,8 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.collider is Moveableblock:
 			collision.collider.apply_central_impulse(-collision.normal * PUSH)
+	
+	
 	
 	#Speed Smoothing
 	var n_speed = speed * movement_dir
@@ -88,6 +94,8 @@ func _physics_process(delta):
 		velocity.x = (31*velocity.x + 0.5*n_speed)/31.5
 	else:
 		velocity.x = (7*velocity.x + n_speed)/8
+	
+
 	
 	if is_on_floor() || (state == STATES.Climb):
 		on_ground = true
@@ -187,6 +195,42 @@ func get_input():
 			inv_mov = -1
 		else:
 			inv_mov = 1
+			
+
+
+	
+func dash():
+	if is_on_floor():
+		canDash = true
+		
+	if Input.is_action_pressed("ui_right"):
+		dashDirection = Vector2(1,0)
+	if Input.is_action_pressed("ui_left"):
+		dashDirection = Vector2(-1, 0)
+		
+	if Input.is_action_just_pressed("ui_dash") and canDash:
+		velocity = dashDirection.normalized() * 500
+		canDash = false
+		dashing = true
+		yield(get_tree().create_timer(0.2), "timeout")
+		
+func wall_dash():
+	if is_on_wall():
+		canDash = true
+		
+	if Input.is_action_pressed("ui_right"):
+		dashDirection = Vector2(1,0)
+	if Input.is_action_pressed("ui_left"):
+		dashDirection = Vector2(-1, 0)
+		
+	if Input.is_action_just_pressed("ui_dash") and canDash:
+		velocity = dashDirection.normalized() * 500
+		canDash = true
+		dashing = false
+		yield(get_tree().create_timer(0.2), "timeout")
+
+	
+	
 	
 	movement_dir *= inv_mov
 	
