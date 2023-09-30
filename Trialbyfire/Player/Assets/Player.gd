@@ -15,7 +15,7 @@ export var can_climb = true
 export var climb_speed = 150
 export var can_double_jump = true
 export(int, 1, 100) var jump_count = 2
-export var can_glide = true
+export var can_glide = false
 export var can_gravity = true
 
 onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
@@ -344,7 +344,7 @@ func boost():
 func check_abilities():
 	can_climb = Global.has_ability("climb")
 	can_double_jump = Global.has_ability("double_jump")
-	can_glide = Global.has_ability("glide")
+	#can_glide = Global.has_ability("glide")
 	can_gravity = Global.has_ability("gravity")
 
 func _on_Coyote_timeout():
@@ -360,6 +360,12 @@ func _on_ForceJump_timeout():
 
 func death():
 	Global.restart_game()
+
+# slide collision for disappearing platforms
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.has_method("collide_with"):
+			collision.collider.collide_with(collision, self)
 
 func teleport(to: Vector2):
 	set_position(to)

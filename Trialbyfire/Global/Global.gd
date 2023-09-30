@@ -2,6 +2,16 @@ extends Node
 
 signal blocks_switched
 
+const UNIT_SIZE = 96
+const PLAYER_JUMP_HEIGHT = -2.25 * 96
+const PLAYER_JUMP_DURATION = 0.4
+
+var gravity
+var player
+
+func _ready():
+	gravity = -2 * PLAYER_JUMP_HEIGHT/ pow(PLAYER_JUMP_DURATION, 2)
+
 var max_coins = 0
 var current_coins = 0
 
