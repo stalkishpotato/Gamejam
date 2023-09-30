@@ -251,8 +251,7 @@ length = 256
 start = "right"
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 605, 299 )
-scale = Vector2( 0.16, 0.16 )
+position = Vector2( 560, 280 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -304,4 +303,4 @@ start_closed = true
 position = Vector2( 584, 152 )
 
 [node name="Cloud" parent="." instance=ExtResource( 22 )]
-position = Vector2( 1249, 407 )
+position = Vector2( 1053, 325 )
