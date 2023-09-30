@@ -214,23 +214,7 @@ func dash():
 		dashing = true
 		yield(get_tree().create_timer(0.2), "timeout")
 		
-func wall_dash():
-	if is_on_wall():
-		canDash = true
-		
-	if Input.is_action_pressed("ui_right"):
-		dashDirection = Vector2(1,0)
-	if Input.is_action_pressed("ui_left"):
-		dashDirection = Vector2(-1, 0)
-		
-	if Input.is_action_just_pressed("ui_dash") and canDash:
-		velocity = dashDirection.normalized() * 500
-		canDash = true
-		dashing = false
-		yield(get_tree().create_timer(0.2), "timeout")
 
-	
-	
 	
 	movement_dir *= inv_mov
 	

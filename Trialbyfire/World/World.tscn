@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://World/Background.tres" type="TileSet" id=1]
 [ext_resource path="res://Objects/DeathTrigger/DeathTrigger.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Objects/Swing/Swing.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Objects/Moving Objects/Actual Fall.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Objects/Moving Objects/Moving block.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Objects/Spike/Death_spike.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=13]
 size = 72
@@ -315,3 +316,6 @@ position = Vector2( 1053, 325 )
 [node name="Movableblock" parent="." instance=ExtResource( 23 )]
 position = Vector2( 560, 227 )
 gravity_scale = 10.0
+
+[node name="Spike" parent="." instance=ExtResource( 24 )]
+position = Vector2( 693, 259 )
